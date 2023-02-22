@@ -24,5 +24,20 @@
 		reverse_proxy http://january:7000
 	}
 
+	route /vortex* {
+                uri strip_prefix /vortex
+                reverse_proxy http://vortex:8080
+        }
+
+	route /vortex-ws {
+                @upgrade {
+                        header Connection *Upgrade*
+                        header Upgrade websocket
+                }
+
+                uri strip_prefix /vortex-ws
+                reverse_proxy @upgrade http://vortex:8080
+	}
+
 	reverse_proxy http://web:5000
 }

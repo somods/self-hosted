@@ -82,6 +82,12 @@ services:
       - caddy
     restart: always
 
+  # REVOLT Voice server (Vortex)
+  vortex:
+    image: revoltchat/vortex:0.3.0-alpha.1
+    restart: always
+    env_file: .env
+
   # Create buckets for minio.
   createbuckets:
     image: minio/mc
