@@ -57,7 +57,7 @@ services:
 
   # Web App (revite)
   web:
-    image: ghcr.io/revoltchat/client:master
+    image: ghcr.io/somods/client:master
     env_file: .env
     depends_on:
       - caddy
